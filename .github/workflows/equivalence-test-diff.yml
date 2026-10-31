@@ -15,7 +15,7 @@ permissions:
 jobs:
   equivalence-test-diff:
     name: "Equivalence Test Diff"
-    runs-on: ubuntu-latest
+    runs-on: graphide-linux-x64-4
 
     steps:
       - name: Fetch source code
