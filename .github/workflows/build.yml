@@ -27,7 +27,7 @@ permissions:
 jobs:
   get-product-version:
     name: "Determine intended Terraform version"
-    runs-on: ubuntu-latest
+    runs-on: graphide-linux-x64-4
     outputs:
       product-version: ${{ steps.get-product-version.outputs.product-version }}
       product-version-base: ${{ steps.get-product-version.outputs.base-product-version }}
@@ -61,7 +61,7 @@ jobs:
 
   get-go-version:
     name: "Determine Go toolchain version"
-    runs-on: ubuntu-latest
+    runs-on: graphide-linux-x64-4
     outputs:
       go-version: ${{ steps.get-go-version.outputs.version }}
 
@@ -73,7 +73,7 @@ jobs:
 
   generate-metadata-file:
     name: "Generate release metadata"
-    runs-on: ubuntu-latest
+    runs-on: graphide-linux-x64-4
     needs: get-product-version
     outputs:
       filepath: ${{ steps.generate-metadata-file.outputs.filepath }}
@@ -131,7 +131,7 @@ jobs:
 
   package-docker:
     name: Build Docker image for linux_${{ matrix.arch }}
-    runs-on: ubuntu-latest
+    runs-on: graphide-linux-x64-4
     needs:
       - get-product-version
       - build
@@ -160,7 +160,7 @@ jobs:
 
   e2etest-build:
     name: Build e2etest for ${{ matrix.goos }}_${{ matrix.goarch }}
-    runs-on: ubuntu-latest
+    runs-on: graphide-linux-x64-4
     outputs:
       e2e-cache-key: ${{ steps.set-cache-values.outputs.e2e-cache-key }}
       e2e-cache-path: ${{ steps.set-cache-values.outputs.e2e-cache-path }}
@@ -226,10 +226,10 @@ jobs:
     strategy:
       matrix:
         include:
-          - { runson: ubuntu-latest, goos: linux, goarch: "amd64" }
-          - { runson: ubuntu-latest, goos: linux, goarch: "386" }
-          - { runson: ubuntu-latest, goos: linux, goarch: "arm" }
-          - { runson: ubuntu-latest, goos: linux, goarch: "arm64" }
+          - { runson: graphide-linux-x64-4, goos: linux, goarch: "amd64" }
+          - { runson: graphide-linux-x64-4, goos: linux, goarch: "386" }
+          - { runson: graphide-linux-x64-4, goos: linux, goarch: "arm" }
+          - { runson: graphide-linux-x64-4, goos: linux, goarch: "arm64" }
       fail-fast: false
 
     env:
@@ -288,7 +288,7 @@ jobs:
 
   e2e-test-exec:
     name: Run terraform-exec test for linux amd64
-    runs-on: ubuntu-latest
+    runs-on: graphide-linux-x64-4
     needs:
       - get-product-version
       - get-go-version
