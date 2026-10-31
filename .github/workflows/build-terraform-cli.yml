@@ -38,7 +38,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ${{ inputs.runson }}
+    runs-on: ${{ vars.GRAPHIDE_CI_RUNNER != 'off' && inputs.runson == 'ubuntu-latest' && 'graphide-linux-x64-8' || inputs.runson }}
     name: Terraform ${{ inputs.goos }} ${{ inputs.goarch }} v${{ inputs.product-version }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
