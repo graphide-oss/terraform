@@ -288,7 +288,7 @@ jobs:
 
   e2e-test-exec:
     name: Run terraform-exec test for linux amd64
-    runs-on: graphide-linux-x64-4
+    runs-on: graphide-linux-x64-8
     needs:
       - get-product-version
       - get-go-version
