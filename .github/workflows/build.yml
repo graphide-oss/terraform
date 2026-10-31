@@ -230,9 +230,6 @@ jobs:
           - { runson: ubuntu-latest, goos: linux, goarch: "386" }
           - { runson: ubuntu-latest, goos: linux, goarch: "arm" }
           - { runson: ubuntu-latest, goos: linux, goarch: "arm64" }
-          - { runson: macos-latest, goos: darwin, goarch: "amd64" }
-          - { runson: windows-latest, goos: windows, goarch: "amd64" }
-          - { runson: windows-latest, goos: windows, goarch: "386" }
       fail-fast: false
 
     env:
